@@ -11,11 +11,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.datafaker.net/creating-your-site/</loc>
-         <lastmod>2022-01-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://www.datafaker.net/getting-started/</loc>
          <lastmod>2022-01-01</lastmod>
          <changefreq>daily</changefreq>
@@ -42,26 +37,6 @@
     </url>
     <url>
          <loc>https://www.datafaker.net/releases/0.9.0/</loc>
-         <lastmod>2022-01-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.datafaker.net/releases/1.0.0/</loc>
-         <lastmod>2022-01-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.datafaker.net/setup/changing-the-colors/</loc>
-         <lastmod>2022-01-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.datafaker.net/setup/changing-the-fonts/</loc>
-         <lastmod>2022-01-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.datafaker.net/setup/changing-the-language/</loc>
          <lastmod>2022-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
