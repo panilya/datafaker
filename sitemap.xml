@@ -6,6 +6,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.datafaker.net/contributing/</loc>
+         <lastmod>2022-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.datafaker.net/creating-your-site/</loc>
          <lastmod>2022-01-01</lastmod>
          <changefreq>daily</changefreq>
@@ -42,11 +47,6 @@
     </url>
     <url>
          <loc>https://www.datafaker.net/releases/1.0.0/</loc>
-         <lastmod>2022-01-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.datafaker.net/releases/1.1.0/</loc>
          <lastmod>2022-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
