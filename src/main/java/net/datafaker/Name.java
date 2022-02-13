@@ -1,11 +1,14 @@
 package net.datafaker;
 
+import net.datafaker.service.FakeValuesService;
+
 import java.util.regex.Pattern;
 
 public class Name {
 
     private static final Pattern SINGLE_QUOTE = Pattern.compile("'");
     private final Faker faker;
+    private final FakeValuesService fakeValueService;
 
     /**
      * Internal constructor, not to be used by clients.  Instances of {@link Name} should be accessed via
@@ -13,6 +16,7 @@ public class Name {
      */
     protected Name(Faker faker) {
         this.faker = faker;
+        this.fakeValueService = faker.fakeValuesService();
     }
 
     /**
@@ -26,7 +30,7 @@ public class Name {
      * @return a random name with given and family names and an optional suffix.
      */
     public String name() {
-        return faker.fakeValuesService().resolve("name.name", this, faker);
+        return fakeValueService.resolve("name.name", this, faker);
     }
 
     /**
@@ -42,7 +46,7 @@ public class Name {
      * @return a random name with a middle name component with optional prefix and suffix
      */
     public String nameWithMiddle() {
-        return faker.fakeValuesService().resolve("name.name_with_middle", this, faker);
+        return fakeValueService.resolve("name.name_with_middle", this, faker);
     }
 
     /**
@@ -60,7 +64,7 @@ public class Name {
      * @return a 'given' name such as Aaliyah, Aaron, Abagail or Abbey
      */
     public String firstName() {
-        return faker.fakeValuesService().resolve("name.first_name", this, faker);
+        return fakeValueService.resolve("name.first_name", this, faker);
     }
 
     /**
@@ -69,7 +73,7 @@ public class Name {
      * @return a random last name such as Smith, Jones or Baldwin
      */
     public String lastName() {
-        return faker.fakeValuesService().resolve("name.last_name", this, faker);
+        return fakeValueService.resolve("name.last_name", this, faker);
     }
 
     /**
@@ -78,7 +82,7 @@ public class Name {
      * @return a name prefix such as Mr., Mrs., Ms., Miss, or Dr.
      */
     public String prefix() {
-        return faker.fakeValuesService().resolve("name.prefix", this, faker);
+        return fakeValueService.resolve("name.prefix", this, faker);
     }
 
     /**
@@ -87,7 +91,7 @@ public class Name {
      * @return a name suffix such as Jr., Sr., I, II, III, IV, V, MD, DDS, PhD or DVM
      */
     public String suffix() {
-        return faker.fakeValuesService().resolve("name.suffix", this, faker);
+        return fakeValueService.resolve("name.suffix", this, faker);
     }
 
     /**
@@ -103,9 +107,9 @@ public class Name {
      */
     public String title() {
         return String.join(" ",
-                faker.fakeValuesService().resolve("name.title.descriptor", this, faker),
-                faker.fakeValuesService().resolve("name.title.level", this, faker),
-                faker.fakeValuesService().resolve("name.title.job", this, faker)
+                fakeValueService.resolve("name.title.descriptor", this, faker),
+                fakeValueService.resolve("name.title.level", this, faker),
+                fakeValueService.resolve("name.title.job", this, faker)
         );
     }
 
@@ -139,6 +143,6 @@ public class Name {
      * @return a blood group such as O−, O+, A-, A+, B-, B+, AB-, AB+
      */
     public String bloodGroup() {
-        return faker.fakeValuesService().resolve("name.blood_group", this, faker);
+        return fakeValueService.resolve("name.blood_group", this, faker);
     }
 }

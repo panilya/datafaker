@@ -3,6 +3,8 @@ package net.datafaker;
 import net.datafaker.service.FakeValuesService;
 import net.datafaker.service.RandomService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
@@ -16,6 +18,7 @@ import java.util.Random;
 public class Faker {
     private final RandomService randomService;
     private final FakeValuesService fakeValuesService;
+    private final List<FakeValuesService> fakeValuesServiceList = new ArrayList<>();
 
     private final Address address;
     private final Ancient ancient;
@@ -153,6 +156,9 @@ public class Faker {
     public Faker(FakeValuesService fakeValuesService, RandomService random) {
         this.randomService = random;
         this.fakeValuesService = fakeValuesService;
+
+        this.fakeValuesServiceList.add(new FakeValuesService(new Locale("nl"), randomService));
+        this.fakeValuesServiceList.add(new FakeValuesService(new Locale("ar"), randomService));
 
         this.address = new Address(this);
         this.ancient = new Ancient(this);
@@ -309,7 +315,7 @@ public class Faker {
     }
 
     Locale getLocale() {
-        return fakeValuesService.getLocalesChain().get(0);
+        return fakeValuesService().getLocalesChain().get(0);
     }
 
     /**
@@ -321,7 +327,7 @@ public class Faker {
      * @return Generated string
      */
     public String numerify(String numberString) {
-        return fakeValuesService.numerify(numberString);
+        return fakeValuesService().numerify(numberString);
     }
 
     /**
@@ -334,7 +340,7 @@ public class Faker {
      * @return Generated string.
      */
     public String letterify(String letterString) {
-        return fakeValuesService.letterify(letterString);
+        return fakeValuesService().letterify(letterString);
     }
 
     /**
@@ -344,7 +350,7 @@ public class Faker {
      * For example, the string "12??34" could be replaced with a string like "12AB34".
      */
     public String letterify(String letterString, boolean isUpper) {
-        return fakeValuesService.letterify(letterString, isUpper);
+        return fakeValuesService().letterify(letterString, isUpper);
     }
 
     /**
@@ -352,7 +358,7 @@ public class Faker {
      * over the incoming string.
      */
     public String bothify(String string) {
-        return fakeValuesService.bothify(string);
+        return fakeValuesService().bothify(string);
     }
 
     /**
@@ -360,14 +366,14 @@ public class Faker {
      * over the incoming string.
      */
     public String bothify(String string, boolean isUpper) {
-        return fakeValuesService.bothify(string, isUpper);
+        return fakeValuesService().bothify(string, isUpper);
     }
 
     /**
      * Generates a String that matches the given regular expression.
      */
     public String regexify(String regex) {
-        return fakeValuesService.regexify(regex);
+        return fakeValuesService().regexify(regex);
     }
 
     /**
@@ -382,7 +388,7 @@ public class Faker {
      * @param example The input string
      * @return The output string based on the input pattern
      */
-    public String examplify(String example) {return fakeValuesService.examplify(example);}
+    public String examplify(String example) {return fakeValuesService().examplify(example);}
 
     /**
      * Returns a string with the char2replace characters in the parameter replaced with random option from available options.
@@ -423,7 +429,9 @@ public class Faker {
     }
 
     FakeValuesService fakeValuesService() {
-        return this.fakeValuesService;
+
+        return fakeValuesServiceList.get(randomService.nextInt(fakeValuesServiceList.size()));
+//        return this.fakeValuesService;
     }
 
     public Ancient ancient() {
@@ -455,7 +463,7 @@ public class Faker {
     }
 
     public Name name() {
-        return name;
+        return new Name(this);
     }
 
     public Number number() {
@@ -874,7 +882,7 @@ public class Faker {
     }
 
     public String resolve(String key) {
-        return this.fakeValuesService.resolve(key, this, this);
+        return this.fakeValuesService().resolve(key, this, this);
     }
 
     /**
@@ -895,7 +903,7 @@ public class Faker {
      * @throws RuntimeException if unable to evaluate the expression
      */
     public String expression(String expression) {
-        return this.fakeValuesService.expression(expression, this);
+        return this.fakeValuesService().expression(expression, this);
     }
 
     public NatoPhoneticAlphabet natoPhoneticAlphabet() {
