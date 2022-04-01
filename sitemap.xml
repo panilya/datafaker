@@ -80,4 +80,9 @@
          <lastmod>2022-04-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://www.datafaker.net/releases/1.4.0-SNAPSHOT/</loc>
+         <lastmod>2022-04-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
